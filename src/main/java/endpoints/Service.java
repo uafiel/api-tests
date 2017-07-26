@@ -23,6 +23,4 @@ public class Service extends Request {
 		return response;
 	}
 
-
-
 }
