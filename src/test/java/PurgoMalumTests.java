@@ -6,6 +6,7 @@ import enums.StatusCode;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import utils.BaseTest;
 import utils.ExcelUtils;
@@ -45,7 +46,7 @@ public class PurgoMalumTests extends BaseTest {
 
 	@DataProvider
 	public Object[][] TestDataC() throws Exception {
-		Object[][] testObjArray = ExcelUtils.getTableArray("src/test/resources/tdInvalidReplacement.xlsx", "Sheet1");
+		Object[][] testObjArray = ExcelUtils.getTableArray("src/test/resources/tdInvalidTextReplacement.xlsx", "Sheet1");
 		return (testObjArray);
 	}
 
@@ -68,10 +69,11 @@ public class PurgoMalumTests extends BaseTest {
 	public void addWordToProfanityListAndCharReplacementForIt(String testName, String input, String forbiddenWords, String replacement, String expected) {
 		this.log.info("Executing " + testName + " test.");
 		this.log.info("Text input: " + input + " expected output: " + expected);
-		Response response = service.addWordsAndTextReplacements(input, StatusCode.OK, forbiddenWords, replacement);
+		Response response = service.addWordsAndCharReplacements(input, StatusCode.OK, forbiddenWords, replacement);
 		ResponseBody body = new ResponseBody();
 		Assert.assertEquals((body.getElement(response, "result")), expected);
 	}
+
 
 
 }
