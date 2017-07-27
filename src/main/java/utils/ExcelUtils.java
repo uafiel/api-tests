@@ -20,7 +20,7 @@ public class ExcelUtils {
     public static Object[][] getTableArray(String FilePath, String SheetName) throws Exception {
 
         String[][] tabArray = null;
-	    FileInputStream ExcelFile = new FileInputStream(FilePath);
+        FileInputStream ExcelFile = new FileInputStream(FilePath);
         try {
 
 
@@ -34,7 +34,7 @@ public class ExcelUtils {
             int totalRows = ExcelWSheet.getLastRowNum();
             System.out.println(totalRows);
             //set columns number
-            int totalCols =  ExcelWSheet.getRow(0).getLastCellNum();
+            int totalCols = ExcelWSheet.getRow(0).getLastCellNum();
             tabArray = new String[totalRows][totalCols];
             ci = 0;
 
@@ -51,13 +51,13 @@ public class ExcelUtils {
             e.printStackTrace();
 
         } catch (IOException e) {
-	        System.out.println("Could not read the Excel sheet");
-	        e.printStackTrace();
+            System.out.println("Could not read the Excel sheet");
+            e.printStackTrace();
 
         } finally {
-        	 if (ExcelFile!= null) {
-		         ExcelFile.close();
-	         }
+            if (ExcelFile != null) {
+                ExcelFile.close();
+            }
         }
 
         return (tabArray);
@@ -71,9 +71,7 @@ public class ExcelUtils {
             if (Cell.getCellTypeEnum() == CellType.ERROR) {
                 return "";
 
-            }
-
-            else {
+            } else {
                 String CellData = Cell.getStringCellValue();
                 return CellData;
             }
