@@ -9,10 +9,10 @@ public class ResponseBody {
 	protected Logger log = LogManager.getLogger(ResponseBody.class.getName());
 
 	public String getElement(Response response, String element) {
-		this.log.info("Getting " + element + " from response");
+		this.log.info("Getting '" + element + "' element from response");
 		String value = response.jsonPath().getString(element);
 		if (value != null) {
-			this.log.info("Element found:" + value);
+			this.log.info("Element found: " + value);
 		} else {
 			this.log.info("No element found");
 		}
