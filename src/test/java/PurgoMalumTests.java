@@ -50,7 +50,7 @@ public class PurgoMalumTests extends BaseTest {
     }
 
     @Test(dataProvider = "TestDataC")
-    public void attemptToUseInvalidReplacement(String testName, String input, String forbiddenWords, String replacement, String expected) {
+    public void attemptToUseInvalidTextReplacement(String testName, String input, String forbiddenWords, String replacement, String expected) {
         this.log.info("Executing " + testName + " test.");
         this.log.info("Text input: " + input + " expected output: " + expected);
         Response response = service.addWordsAndTextReplacements(input, StatusCode.OK, forbiddenWords, replacement);
